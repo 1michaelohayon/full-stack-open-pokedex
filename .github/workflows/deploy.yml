@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    needs: [carry_out]
+    if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
