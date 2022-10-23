@@ -28,11 +28,14 @@ jobs:
         with:
           severity: info
           details: Test Succeeded!
+          text: A new version of Pokedex deployed.
+          description:  to https://serene-escarpment-63358.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
           severity: error
-          details: Test Failed!
+          details: 'commit to https://github.com/1michaelohayon/full-stack-open-pokedex you broke the build :('
+          text: build failed :S.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
