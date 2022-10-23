@@ -10,8 +10,8 @@ on:
 
 jobs:
   build:
+    needs: [carry_out]
     if: ${{ github.event_name == 'push' }}
-    if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

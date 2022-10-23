@@ -9,8 +9,10 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
+  carry_out:
     if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
+  simple_deployment_pipeline:
+    needs: [carry_out]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
