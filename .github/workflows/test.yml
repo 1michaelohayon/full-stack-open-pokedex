@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  carry_out:
+  parse_commit_messages:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -27,8 +27,8 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: contains '#skip'
         env:
-          NOT_CONTAINING_SKIP: ${{ !contains(join(github.event.commits.*.message, ', '), '#skip') }}
-        run: echo "$CONTAINS_SKIP"
+          NOT_CONTAINING_SKIP: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
+        run: echo "$CONTAINS_SKIP" #returns true if commit messages doesn't include #skip 
 
 
 
