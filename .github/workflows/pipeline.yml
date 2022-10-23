@@ -10,6 +10,8 @@ on:
 
 jobs:
   simple_deployment_pipeline:
+    needs: [carry_out]
+    if: ${{ NOT_CONTAINING_SKIP }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
