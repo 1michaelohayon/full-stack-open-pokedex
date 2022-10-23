@@ -8,6 +8,7 @@ on:
     branches: [master]
     types: [opened, synchronize]
 
+
 jobs:
   simple_deployment_pipeline:
     if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
@@ -34,8 +35,10 @@ jobs:
   tag_release:
     if: ${{ github.event_name == 'push' }}
     needs: [simple_deployment_pipeline]
-    runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         env:
