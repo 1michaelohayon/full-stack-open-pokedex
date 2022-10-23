@@ -28,7 +28,7 @@ jobs:
         with:
           severity: info
           details: Test Succeeded!
-          text: A new version of Pokedex deployed.
+          text: A new version of Pokedex deployed by 1michaelohayon.
           description:  to https://serene-escarpment-63358.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
