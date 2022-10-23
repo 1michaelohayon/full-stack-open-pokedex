@@ -28,7 +28,7 @@ jobs:
       - name: contains '#skip'
         env:
           NOT_CONTAINING_SKIP: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
-        run: echo "$CONTAINS_SKIP" #returns true if commit messages doesn't include #skip 
+        run: echo "$CONTAINS_SKIP" #returns true if commit messages doesn't include #skip
 
 
 
