@@ -9,14 +9,8 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  carry_out:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: parse commit-mesage for skip
-        if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
   simple_deployment_pipeline:
-    needs: [carry_out]
+    if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
